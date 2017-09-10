@@ -10,6 +10,12 @@
     <name>[MAUI] maui-service</name>
     <url>http://maven.apache.org</url>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.6.RELEASE</version>
+    </parent>
+
     <modules></modules>
 
     <properties>
@@ -18,6 +24,7 @@
         <version.spring-boot>1.5.6.RELEASE</version.spring-boot>
         <version.lombok>1.16.18</version.lombok>
         <version.junit>4.12</version.junit>
+        <version.log4j>2.8.2</version.log4j>
     </properties>
 
     <dependencies>
@@ -54,24 +61,6 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${version.spring-boot}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${version.spring-boot}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <scope>test</scope>
-                <version>${version.spring-boot}</version>
-            </dependency>
-            <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${version.junit}</version>
@@ -80,7 +69,7 @@
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-core</artifactId>
-                <version>2.8.2</version>
+                <version>${version.log4j}</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
@@ -92,31 +81,10 @@
     </dependencyManagement>
 
     <build>
-        <sourceDirectory>src/main/java</sourceDirectory>
-        <testSourceDirectory>src/test/java</testSourceDirectory>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.5.1</version>
-                    <configuration>
-                        <source>${java.version}</source>
-                        <source>${java.version}</source>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${version.spring-boot}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${version.spring-boot}</version>
             </plugin>
         </plugins>
     </build>
