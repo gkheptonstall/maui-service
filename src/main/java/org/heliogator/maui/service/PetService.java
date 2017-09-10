@@ -23,4 +23,17 @@ public class PetService {
         }
         return true;
     }
+
+    public long findFactorial(int numToFactorial) {
+        long factorialSum = numToFactorial;
+        for (long i = numToFactorial - 1; i > 1; i--) {
+            factorialSum *= i;
+        }
+        String factorialSumStr = String.valueOf(factorialSum);
+        factorialSum = 0L;
+        for (char c : factorialSumStr.toCharArray()) {
+            factorialSum += Long.parseLong(String.valueOf(c));
+        }
+        return factorialSum;
+    }
 }

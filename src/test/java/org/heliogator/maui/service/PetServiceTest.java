@@ -21,4 +21,10 @@ public class PetServiceTest {
         long sum = service.addPrimes(10);
         assertEquals(17, sum);
     }
+
+    @Test
+    public void testFactorialSum() {
+        long sum = service.findFactorial(10);
+        assertEquals(27, sum);
+    }
 }
