@@ -1,9 +1,39 @@
 package org.heliogator.maui.service;
 
+import org.heliogator.maui.entity.Owner;
+import org.heliogator.maui.entity.Pet;
+import org.heliogator.maui.repository.OwnerRepository;
+import org.heliogator.maui.repository.PetRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PetService {
+
+    @Autowired
+    PetRepository petRepository;
+
+    @Autowired
+    OwnerRepository ownerRepository;
+
+    public Pet findPet(long petId) {
+        Pet pet = petRepository.findOne(petId);
+        if (pet == null) {
+
+            Owner owner = new Owner();
+            owner.setName("Nikka");
+            ownerRepository.save(owner);
+
+            pet = new Pet();
+            pet.setId(petId);
+            pet.setName("Maui");
+            pet.setType("Cat");
+            pet.setOwner(owner);
+
+            petRepository.saveAndFlush(pet);
+        }
+        return petRepository.findOne(petId);
+    }
 
     public long addPrimes(int maxNum) {
         long primeSum = 0;

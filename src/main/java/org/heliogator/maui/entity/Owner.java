@@ -2,21 +2,17 @@ package org.heliogator.maui.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 @Data
-public class Pet {
+public class Owner {
 
     @Id
     @GeneratedValue
     private long id;
 
     private String name;
-
-    private String type;
-
-    @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private Owner owner;
 }
