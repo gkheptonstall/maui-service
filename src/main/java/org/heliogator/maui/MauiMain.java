@@ -9,4 +9,8 @@ public class MauiMain {
     public static void main(String[] args) {
         SpringApplication.run(MauiMain.class);
     }
+
+    public static long sumOfPrimes(int input) {
+        return input;
+    }
 }
