@@ -1,6 +1,6 @@
 package org.heliogator.maui.repository;
 
-import org.heliogator.maui.MauiMain;
+import org.heliogator.maui.MauiMainTest;
 import org.heliogator.maui.entity.Pet;
 import org.junit.After;
 import org.junit.Before;
@@ -13,10 +13,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = MauiMain.class)
+@ContextConfiguration(classes = MauiMainTest.class)
 public class PetRepositoryTest {
 
-    private final long testPetId = 999999999L;
+    private final long testPetId = 0L;
 
     @Autowired
     PetRepository repository;
@@ -25,7 +25,7 @@ public class PetRepositoryTest {
     public void beforeTest() {
 
         Pet pet = new Pet();
-        pet.setId(999999999L);
+        pet.setId(testPetId);
         pet.setName("Maui");
         pet.setType("Cat");
 
@@ -41,5 +41,10 @@ public class PetRepositoryTest {
     public void findOne() {
         Pet pet = repository.findOne(testPetId);
         assertNotNull(pet);
+    }
+
+    @Test
+    public void addPrimes() {
+
     }
 }
