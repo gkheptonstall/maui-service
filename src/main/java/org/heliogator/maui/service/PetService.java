@@ -16,8 +16,8 @@ public class PetService {
     @Autowired
     OwnerRepository ownerRepository;
 
-    public Pet findPet(long petId) {
-        Pet pet = petRepository.findOne(petId);
+    public Pet findPet(String petName) {
+        Pet pet = petRepository.findByName(petName);
         if (pet == null) {
 
             Owner owner = new Owner();
@@ -25,14 +25,13 @@ public class PetService {
             ownerRepository.save(owner);
 
             pet = new Pet();
-            pet.setId(petId);
-            pet.setName("Maui");
+            pet.setName(petName);
             pet.setType("Cat");
             pet.setOwner(owner);
 
             petRepository.saveAndFlush(pet);
         }
-        return petRepository.findOne(petId);
+        return petRepository.findByName(petName);
     }
 
     public long addPrimes(int maxNum) {

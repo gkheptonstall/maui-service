@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PetController {
 
-//    private static final Logger LOG = LogManager.getLogger(PetController.class);
+    //    private static final Logger LOG = LogManager.getLogger(PetController.class);
     @Autowired
     PetService service;
 
-    @RequestMapping(value = "/pet/{id}", method = RequestMethod.GET)
-    public Pet findPet(@PathVariable String id) {
-        System.out.print(id);
-        return service.findPet(Long.valueOf(id));
+    @RequestMapping(value = "/pet/{name}", method = RequestMethod.GET)
+    public Pet findPet(@PathVariable String name) {
+        System.out.print(name);
+        return service.findPet(name);
     }
 }

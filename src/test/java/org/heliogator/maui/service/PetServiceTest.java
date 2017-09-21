@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MauiMainTest.class)
@@ -37,12 +38,12 @@ public class PetServiceTest {
     public void beforeTest() {
 
         Owner owner = new Owner();
-        owner.setId(testOwnerId);
+//        owner.setId(testOwnerId);
         owner.setName("Nikka");
         ownerRepository.save(owner);
 
         Pet pet = new Pet();
-        pet.setId(testPetId);
+//        pet.setId(testPetId);
         pet.setName("Maui");
         pet.setType("Cat");
         pet.setOwner(owner);
@@ -52,8 +53,8 @@ public class PetServiceTest {
 
     @After
     public void afterTest() {
-        repository.delete(testPetId);
-        ownerRepository.delete(testOwnerId);
+        repository.deleteAll();
+        ownerRepository.deleteAll();
     }
 
     @Test
@@ -70,9 +71,20 @@ public class PetServiceTest {
 
     @Test
     public void testFindPet() {
-        Pet pet = service.findPet(0L);
+        Pet pet = service.findPet("Maui");
         assertNotNull(pet);
         Owner owner = pet.getOwner();
+        assertNotNull(owner);
+        assertEquals("Nikka", owner.getName());
+    }
+
+    @Test
+    public void testFindNewPet() {
+        String newPetName = "Chloe";
+        assertNull(repository.findByName(newPetName));
+        Pet newPet = service.findPet(newPetName);
+        assertNotNull(newPet);
+        Owner owner = newPet.getOwner();
         assertNotNull(owner);
         assertEquals("Nikka", owner.getName());
     }
