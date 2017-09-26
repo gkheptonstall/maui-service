@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,19 +29,29 @@ public class PieSequenceServiceTest {
     
     @Test
     public void createSequence() {
-        List[] sequenceLists = service.getPieSequence(10);
+        List<List<Long>> sequenceLists = service.getPieSequences(10);
+        List<List<Long>> expectedSequences = new ArrayList <>();
         List<Long> firstSequence = Arrays.asList(10L, 4L);
+        expectedSequences.add(firstSequence);
         List<Long> secondSequence = Arrays.asList(10L, 4L, 2L);
+        expectedSequences.add(secondSequence);
         List<Long> thirdSequence = Arrays.asList(10L, 4L, 2L, 1L);
-        List[] expectedSequences = {firstSequence, secondSequence, thirdSequence};
+        expectedSequences.add(thirdSequence);
         
-        assertTrue(Arrays.equals(sequenceLists, expectedSequences));
+        assertEquals(expectedSequences, sequenceLists);
         
     }
     
     @Test
     public void countNonPrimes() {
-        long nonPrimes = service.countNonPrimes(new Long[]{10L, 4L, 2L, 1L});
-        assertEquals(2, nonPrimes);
+        long result = service.countNonPrimesForAllSequences(4);
+        assertEquals(3L, result);
+        result = service.countNonPrimesForAllSequences(10);
+        assertEquals(648L , result);
+        result = service.countNonPrimesForAllSequences(100);
+        assertEquals(31038676032L, result);
+        BigInteger bigInteger = new BigInteger(String.valueOf(Math.pow(10, 8)));
+        result = service.countNonPrimesForAllSequences(Long.valueOf(String.valueOf(Math.pow(10L,8L))));
+        System.out.print(result);
     }
 }
