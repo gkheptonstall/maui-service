@@ -1,19 +1,17 @@
 package org.heliogator.maui.service;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.heliogator.maui.MauiMainTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = MauiMainTest.class)
@@ -50,8 +48,8 @@ public class PieSequenceServiceTest {
         assertEquals(648L , result);
         result = service.countNonPrimesForAllSequences(100);
         assertEquals(31038676032L, result);
-        BigInteger bigInteger = new BigInteger(String.valueOf(Math.pow(10, 8)));
-        result = service.countNonPrimesForAllSequences(Long.valueOf(String.valueOf(Math.pow(10L,8L))));
-        System.out.print(result);
+        //        BigInteger bigInteger = new BigInteger(String.valueOf(100000000));
+        //        result = service.countNonPrimesForAllSequences(bigInteger.longValue());
+        //        System.out.print(result);
     }
 }

@@ -1,4 +1,4 @@
-package org.heliogator.maui.controller;
+package org.heliogator.maui.rest.controller;
 
 import org.heliogator.maui.entity.Pet;
 import org.heliogator.maui.service.PetService;
@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@RequestMapping(value = "/pet")
 @RestController
 public class PetController {
 
@@ -15,7 +16,7 @@ public class PetController {
     @Autowired
     PetService service;
 
-    @RequestMapping(value = "/pet/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
     public Pet findPet(@PathVariable String name) {
         System.out.print(name);
         return service.findPet(name);

@@ -1,0 +1,30 @@
+Configuration:
+  status: warn
+  name: MAUI-SERVICE
+  properties:
+    property:
+      name: log
+      value: logs/app.log
+    property:
+      name: archive
+      value: logs/archive/app-%1-%d{yyyy-MM-dd}.log.zip
+    property:
+      name: format
+      value: %d %5p %c{-1} %m%n
+  appenders:
+    Console:
+      name: STDOUT
+      PatternLayout: ${format}
+    File:
+      name: FILE
+      fileName: ${log}
+      filePattern: ${archive}
+      PatternLayout: ${format}
+  Loggers:
+    logger:
+      Root:
+        level: debug
+        AppenderRef:
+          ref: STDOUT
+        AppenderRef:
+          ref: FILE
