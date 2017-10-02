@@ -1,8 +1,12 @@
 package org.heliogator.maui.entity;
 
-import lombok.Data;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-import javax.persistence.*;
+import lombok.Data;
 
 @Entity
 @Data

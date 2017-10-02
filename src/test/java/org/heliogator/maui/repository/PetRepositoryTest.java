@@ -1,5 +1,10 @@
 package org.heliogator.maui.repository;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
+
 import org.heliogator.maui.MauiMainTest;
 import org.heliogator.maui.entity.Owner;
 import org.heliogator.maui.entity.Pet;
@@ -8,16 +13,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = MauiMainTest.class)
+@SpringBootTest(classes = MauiMainTest.class)
 public class PetRepositoryTest {
 
     private final long testPetId = 0L;

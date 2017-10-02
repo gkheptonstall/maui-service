@@ -1,6 +1,6 @@
 Configuration:
   status: warn
-  name: MAUI-SERVICE
+  name: maui-service
   properties:
     property:
       name: log

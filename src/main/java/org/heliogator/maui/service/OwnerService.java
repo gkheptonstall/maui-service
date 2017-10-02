@@ -1,14 +1,14 @@
 package org.heliogator.maui.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.heliogator.maui.entity.Owner;
 import org.heliogator.maui.repository.OwnerRepository;
 import org.heliogator.maui.repository.PetRepository;
 import org.heliogator.maui.rest.api.OwnerDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class OwnerService {

@@ -1,11 +1,11 @@
 package org.heliogator.maui.repository;
 
+import java.util.List;
+import javax.transaction.Transactional;
+
 import org.heliogator.maui.entity.Pet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
-import javax.transaction.Transactional;
-import java.util.List;
 
 @Transactional
 public interface PetRepository extends JpaRepository<Pet, Long> {

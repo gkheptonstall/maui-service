@@ -1,7 +1,8 @@
 package org.heliogator.maui.rest.api;
 
-import lombok.Data;
 import org.heliogator.maui.entity.Owner;
+
+import lombok.Data;
 
 @Data
 public class OwnerDetails {

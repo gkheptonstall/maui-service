@@ -1,5 +1,9 @@
 package org.heliogator.maui.service;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import org.heliogator.maui.MauiMainTest;
 import org.heliogator.maui.entity.Owner;
 import org.heliogator.maui.entity.Pet;
@@ -11,12 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = MauiMainTest.class)
