@@ -1,3 +1,4 @@
 .idea
 maui-service.iml
-target
+target/
+logs/

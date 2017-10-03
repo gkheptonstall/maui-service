@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.heliogator.maui.MauiMainTest;
 import org.heliogator.maui.entity.Owner;
 import org.heliogator.maui.entity.Pet;
@@ -20,9 +22,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest(classes = MauiMainTest.class)
 public class PetRepositoryTest {
 
-    private final long testPetId = 0L;
-
-    private final long testOwnerId = 0L;
+    private static final Logger LOG = LogManager.getLogger(PetRepositoryTest.class);
 
     @Autowired
     PetRepository repository;
@@ -59,6 +59,8 @@ public class PetRepositoryTest {
         assertNotNull(pet);
         Owner owner = pet.getOwner();
         assertNotNull(owner);
+        LOG.info(pet.getName());
+        LOG.info(owner.getName());
     }
 
     @Test
@@ -68,6 +70,8 @@ public class PetRepositoryTest {
             assertEquals("Maui", pet.getName());
             Owner owner = pet.getOwner();
             assertEquals("Nikka", owner.getName());
+            LOG.info(pet.getName());
+            LOG.info(owner.getName());
         });
     }
 
