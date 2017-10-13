@@ -3,6 +3,7 @@ package org.heliogator.maui.service;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.heliogator.maui.MauiMainTest;
 import org.heliogator.maui.entity.Owner;
@@ -87,5 +88,18 @@ public class PetServiceTest {
         Owner owner = newPet.getOwner();
         assertNotNull(owner);
         assertEquals("Nikka", owner.getName());
+    }
+
+    @Test
+    public void testStringMatcher() {
+        String testString = "ABCD TEST='12345' XYZ";
+        boolean isMatch = testString.matches(".*TEST='.*'.*");
+        assertTrue(isMatch);
+        String newString = testString.replaceAll("TEST='.*'", "TEST='NEWSTRING'");
+        assertEquals("ABCD TEST='NEWSTRING' XYZ", newString);
+        String extractedString = newString.replaceAll(".*TEST='", "");
+        assertEquals("NEWSTRING' XYZ", extractedString);
+        extractedString = extractedString.replaceAll("'.*", "");
+        assertEquals("NEWSTRING", extractedString);
     }
 }
